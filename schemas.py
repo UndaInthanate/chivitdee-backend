@@ -33,6 +33,25 @@ class ExpenseOut(ExpenseCreate):
         from_attributes = True
 
 
+class IncomeCreate(BaseModel):
+    date: date
+    category: str
+    description: Optional[str] = None
+    amount: float
+
+
+class IncomeOut(IncomeCreate):
+    id: int
+    class Config:
+        from_attributes = True
+
+
+class BalanceOut(BaseModel):
+    total_income: float
+    total_expense: float
+    balance: float
+
+
 class BudgetSummary(BaseModel):
     category: str
     budget: float
